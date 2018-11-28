@@ -1,12 +1,20 @@
 const passport = require('passport');
+const express = require('express');
 
-module.exports = app => {
-  app.get(
-    '/auth/google',
-    passport.authenticate('google', {
-      scope: ['profile', 'email']
-    })
-  );
+const router = express.Router();
 
-  app.get('/auth/google/callback', passport.authenticate('google'));
-};
+router.get(
+  '/auth/google',
+  passport.authenticate('google', {
+    scope: ['profile', 'email']
+  })
+);
+
+router.get('/auth/google/callback', passport.authenticate('google'));
+
+router.get('/api/logout', (req, res) => {
+  req.logout();
+  res.send(req.user);
+});
+
+module.exports = router;
