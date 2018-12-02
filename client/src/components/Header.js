@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { fetchUser } from '../store/actions';
 
 const Header = ({ auth }) => {
-  function renderContent() {
+  function renderControls() {
     switch (auth) {
       case null:
         return null;
@@ -18,7 +18,7 @@ const Header = ({ auth }) => {
       default:
         return (
           <li>
-            <a href=" ">Logout</a>
+            <a href="/api/logout">Logout</a>
           </li>
         );
     }
@@ -30,7 +30,7 @@ const Header = ({ auth }) => {
         <a href=" " className="left brand-logo">
           Email Sender
         </a>
-        <ul className="right">{renderContent()}</ul>
+        <ul className="right">{renderControls()}</ul>
       </div>
     </nav>
   );
