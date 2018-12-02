@@ -2,12 +2,9 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": {
-    "/auth/google": {
-      "target": "http://localhost:5000"
-    }
-  },
+  "proxy": "http://localhost:5000",
   "dependencies": {
+    "axios": "^0.18.0",
     "eslint-config-airbnb": "^17.1.0",
     "materialize-css": "^1.0.0",
     "prop-types": "^15.6.2",
