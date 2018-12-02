@@ -17,4 +17,8 @@ router.get('/api/logout', (req, res) => {
   res.send(req.user);
 });
 
+router.get('/api/current_user', (req, res) => {
+  res.send(req.user);
+});
+
 module.exports = router;
