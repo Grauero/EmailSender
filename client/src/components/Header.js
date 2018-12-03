@@ -3,35 +3,50 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { fetchUser } from '../store/actions';
+import { loginUser, logoutUser } from '../store/actions';
+import Payments from './Payments';
 
-const Header = ({ auth }) => {
+const Header = ({ auth, loginUser, logoutUser }) => {
+  const handleLogin = (e) => {
+    e.preventDefault();
+    loginUser();
+  };
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logoutUser();
+  };
+
   function renderControls() {
-    switch (auth) {
-      case null:
-        return null;
-      case false:
-        return (
-          <li>
-            <a href="/auth/google">Login With Google</a>
-          </li>
-        );
-      default:
-        return (
-          <li>
-            <a href="/api/logout">Logout</a>
-          </li>
-        );
+    if (auth.isAuthorized) {
+      return [
+        <li key="1">
+          <Payments />
+        </li>,
+        <li key="2">
+          <a onClick={e => handleLogout(e)} href="/auth/logout">
+            Logout
+          </a>
+        </li>
+      ];
     }
+
+    return (
+      <li>
+        <a onClick={e => handleLogin(e)} href="/auth/google">
+          Login With Google
+        </a>
+      </li>
+    );
   }
 
-  const logoURL = auth ? '/surveys' : '';
+  const logoURL = auth.isAuthorized ? '/surveys' : '';
 
   return (
     <nav>
-      <div className="naw-wrapper">
+      <div className="nav-wrapper">
         <Link to={logoURL} className="left brand-logo">
-          Email Sender
+          EmailSender
         </Link>
         <ul className="right">{renderControls()}</ul>
       </div>
@@ -41,7 +56,8 @@ const Header = ({ auth }) => {
 
 Header.propTypes = {
   auth: PropTypes.instanceOf(Object).isRequired,
-  fetchUser: PropTypes.func.isRequired
+  loginUser: PropTypes.func.isRequired,
+  logoutUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -50,5 +66,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchUser }
+  { logoutUser, loginUser }
 )(Header);

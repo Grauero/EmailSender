@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Provider, connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { fetchUser } from '../store/actions';
 import 'materialize-css/dist/css/materialize.min.css';
 
-import store from '../store/store';
 import Header from './Header';
 import Landing from './Landing';
 
@@ -19,18 +18,16 @@ class App extends Component {
 
   render() {
     return (
-      <Provider store={store}>
-        <div className="container">
-          <BrowserRouter>
-            <div>
-              <Header />
-              <Route exact path="/" component={Landing} />
-              <Route exact path="/surveys" component={Dashboard} />
-              <Route exact path="/surveys/new" component={SurveyNew} />
-            </div>
-          </BrowserRouter>
-        </div>
-      </Provider>
+      <div className="container">
+        <BrowserRouter>
+          <div>
+            <Header />
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/surveys" component={Dashboard} />
+            <Route exact path="/surveys/new" component={SurveyNew} />
+          </div>
+        </BrowserRouter>
+      </div>
     );
   }
 }
