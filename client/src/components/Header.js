@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { fetchUser } from '../store/actions';
 
@@ -24,12 +25,14 @@ const Header = ({ auth }) => {
     }
   }
 
+  const logoURL = auth ? '/surveys' : '';
+
   return (
     <nav>
       <div className="naw-wrapper">
-        <a href=" " className="left brand-logo">
+        <Link to={logoURL} className="left brand-logo">
           Email Sender
-        </a>
+        </Link>
         <ul className="right">{renderControls()}</ul>
       </div>
     </nav>
