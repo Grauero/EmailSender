@@ -20,7 +20,10 @@ const Header = ({ auth }) => {
           <li key="1">
             <Payments />
           </li>,
-          <li key="2">
+          <li key="2" style={{ margin: '0 10px' }}>
+            Credits: {auth.credits}
+          </li>,
+          <li key="3">
             <a href="http://localhost:5000/auth/logout">Logout</a>
           </li>
         ];
@@ -31,7 +34,7 @@ const Header = ({ auth }) => {
     <nav>
       <div className="nav-wrapper">
         <Link to={auth ? '/surveys' : '/'} className="left brand-logo">
-          Emaily
+          EmailSender
         </Link>
         <ul className="right">{renderContent()}</ul>
       </div>
