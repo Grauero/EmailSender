@@ -1,10 +1,15 @@
 const express = require('express');
-const keys = require('../config/keys');
-const stripe = require('stripe')(keys.stripeSecretKey);
+let stripe = require('stripe');
 
+const keys = require('../config/keys');
 const requireLogin = require('../middlewares/requireLogin');
+const requireCredits = require('../middlewares/requireCredits');
+const Mailer = require('../services/Mailer');
+const Survey = require('../models/Survey');
+const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 
 const router = express.Router();
+stripe = stripe(keys.stripeSecretKey);
 
 router.get('/current_user', (req, res) => {
   res.send(req.user);
@@ -22,6 +27,24 @@ router.post('/stripe', requireLogin, async (req, res) => {
   const updatedUser = await req.user.save();
 
   res.send(updatedUser);
+});
+
+router.post('/surveys', requireLogin, requireCredits, (req, res) => {
+  const { title, subject, body } = req.body;
+  const recipients = req.body.recipients
+    .split(',')
+    .map(email => ({ email: email.trim() }));
+
+  const newSurvey = new Survey({
+    title,
+    subject,
+    body,
+    recipients,
+    _user: req.user.id,
+    dateSent: Date.now()
+  });
+
+  const mailer = new Mailer(newSurvey, surveyTemplate(newSurvey));
 });
 
 module.exports = router;
