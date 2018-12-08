@@ -45,6 +45,7 @@ router.post('/surveys', requireLogin, requireCredits, (req, res) => {
   });
 
   const mailer = new Mailer(newSurvey, surveyTemplate(newSurvey));
+  mailer.send();
 });
 
 module.exports = router;
