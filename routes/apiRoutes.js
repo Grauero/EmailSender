@@ -29,7 +29,7 @@ router.post('/stripe', requireLogin, async (req, res) => {
   res.send(updatedUser);
 });
 
-router.post('/surveys', requireLogin, requireCredits, (req, res) => {
+router.post('/surveys', requireLogin, requireCredits, async (req, res) => {
   const { title, subject, body } = req.body;
   const recipients = req.body.recipients
     .split(',')
@@ -44,8 +44,21 @@ router.post('/surveys', requireLogin, requireCredits, (req, res) => {
     dateSent: Date.now()
   });
 
-  const mailer = new Mailer(newSurvey, surveyTemplate(newSurvey));
-  mailer.send();
+  try {
+    const mailer = new Mailer(newSurvey, surveyTemplate(newSurvey));
+    await mailer.send();
+    await newSurvey.save();
+    req.user.credits -= 1;
+    const updatedUser = await req.user.save();
+
+    res.send(updatedUser);
+  } catch (err) {
+    res.status(422).send(err);
+  }
+});
+
+router.get('/surveys/thanks', (req, res) => {
+  res.send('Thanks for voting!');
 });
 
 module.exports = router;
