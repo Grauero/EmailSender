@@ -36,6 +36,7 @@ const SurveyFormReview = ({
 };
 
 SurveyFormReview.propTypes = {
+  history: PropTypes.instanceOf(Object).isRequired,
   formValues: PropTypes.instanceOf(Object).isRequired,
   onCancel: PropTypes.func.isRequired,
   submitSurvey: PropTypes.func.isRequired

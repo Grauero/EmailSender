@@ -30,28 +30,26 @@ router.post('/stripe', requireLogin, async (req, res) => {
 });
 
 router.post('/surveys', requireLogin, requireCredits, async (req, res) => {
-  const { title, subject, body } = req.body;
-  const recipients = req.body.recipients
-    .split(',')
-    .map(email => ({ email: email.trim() }));
+  const { title, subject, body, recipients } = req.body;
 
-  const newSurvey = new Survey({
+  const survey = new Survey({
     title,
     subject,
     body,
-    recipients,
+    recipients: recipients.split(',').map(email => ({ email: email.trim() })),
     _user: req.user.id,
     dateSent: Date.now()
   });
 
-  try {
-    const mailer = new Mailer(newSurvey, surveyTemplate(newSurvey));
-    await mailer.send();
-    await newSurvey.save();
-    req.user.credits -= 1;
-    const updatedUser = await req.user.save();
+  const mailer = new Mailer(survey, surveyTemplate(survey));
 
-    res.send(updatedUser);
+  try {
+    await mailer.send();
+    await survey.save();
+    req.user.credits -= 1;
+    const user = await req.user.save();
+
+    res.send(user);
   } catch (err) {
     res.status(422).send(err);
   }
@@ -59,6 +57,12 @@ router.post('/surveys', requireLogin, requireCredits, async (req, res) => {
 
 router.get('/surveys/thanks', (req, res) => {
   res.send('Thanks for voting!');
+});
+
+router.post('/surveys/webhooks', (req, res) => {
+  console.log(req);
+
+  res.send({});
 });
 
 module.exports = router;
