@@ -37,7 +37,7 @@ router.post('/', requireLogin, requireCredits, async (req, res) => {
   }
 });
 
-router.get('/thanks', (req, res) => {
+router.get('/:surveyId/:choice', (req, res) => {
   res.send('Thanks for voting!');
 });
 
@@ -67,7 +67,8 @@ router.post('/webhooks', (req, res) => {
         },
         {
           $inc: { [choice]: 1 },
-          $set: { 'recipients.$.responded': true }
+          $set: { 'recipients.$.responded': true },
+          lastResponded: new Date()
         }
       ).exec();
     })
