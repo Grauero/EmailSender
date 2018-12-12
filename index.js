@@ -6,6 +6,7 @@ const passport = require('passport');
 
 const auth = require('./routes/authRoutes');
 const api = require('./routes/apiRoutes');
+const survey = require('./routes/surveyRoutes');
 const keys = require('./config/keys');
 require('./services/passport');
 
@@ -27,6 +28,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/auth', auth);
+app.use('/api/surveys', survey);
 app.use('/api', api);
 
 if (process.env.NODE_ENV === 'production') {
