@@ -57,7 +57,7 @@ router.post('/webhooks', (req, res) => {
       const match = pathPattern.test(new URL(url).pathname);
 
       if (match) {
-        return { email, ...match };
+        return { email, surveyId: match.surveyId, choice: match.choice };
       }
     })
     .compact()
