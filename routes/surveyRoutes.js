@@ -1,5 +1,5 @@
 const express = require('express');
-const Path = require('path-parser');
+const Path = require('path-parser').default;
 const { URL } = require('url');
 const _ = require('lodash');
 
