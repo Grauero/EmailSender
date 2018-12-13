@@ -14,12 +14,12 @@ router.get(
 );
 
 router.get('/google/callback', passport.authenticate('google'), (req, res) => {
-  res.redirect('http://localhost:3000/surveys');
+  res.redirect('/surveys');
 });
 
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('http://localhost:3000/');
+  res.redirect('/');
 });
 
 module.exports = router;
