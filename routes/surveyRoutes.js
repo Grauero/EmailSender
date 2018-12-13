@@ -11,6 +11,14 @@ const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 
 const router = express.Router();
 
+router.get('/', requireLogin, async (req, res) => {
+  const userSurveys = await Survey.find({ _user: req.user.id }).select({
+    recipients: false
+  });
+
+  res.send(userSurveys);
+});
+
 router.post('/', requireLogin, requireCredits, async (req, res) => {
   const { title, subject, body, recipients } = req.body;
 
