@@ -33,8 +33,12 @@ const Header = ({ auth }) => {
   return (
     <nav>
       <div className="nav-wrapper">
-        <Link to={auth ? '/surveys' : '/'} className="left brand-logo">
-          EmailSender
+        <Link
+          to={auth ? '/surveys' : '/'}
+          className="left brand-logo"
+          style={{ marginLeft: '10px' }}
+        >
+          <i className="material-icons left">email</i>EmailSender
         </Link>
         <ul className="right">{renderContent()}</ul>
       </div>
