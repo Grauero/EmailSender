@@ -20,17 +20,17 @@ class SurveyList extends Component {
         <div className="card-action row">
           <span
             className="green-text text-darken-2 col s-12 push-m2 m-6"
-            style={{ letterSpacing: '2px', marginTop: '10px', textDecoration: 'underline' }}
+            style={{ letterSpacing: '2px', marginTop: '10px' }}
           >
             Number Of Positive Feedbacks:
-            <span style={{ fontSize: '1.5em', textDecoration: 'none' }}>{survey.yes}</span>
+            <span style={{ fontSize: '1.5em' }}> {survey.yes}</span>
           </span>
           <span
             className="red-text text-darken-3 col s-12 push-m2 m-6"
-            style={{ letterSpacing: '2px', marginTop: '10px', textDecoration: 'underline' }}
+            style={{ letterSpacing: '2px', marginTop: '10px' }}
           >
             Number Of Negative Feedbacks:
-            <span style={{ fontSize: '1.5em', textDecoration: 'none' }}>{survey.no}</span>
+            <span style={{ fontSize: '1.5em' }}> {survey.no}</span>
           </span>
         </div>
       </div>
