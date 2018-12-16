@@ -12,7 +12,7 @@ const Header = ({ auth }) => {
       case false:
         return (
           <li>
-            <a href={process.env.REACT_APP_LOGIN}>Login With Google</a>
+            <a href="/auth/google">Login With Google</a>
           </li>
         );
       default:
@@ -24,7 +24,7 @@ const Header = ({ auth }) => {
             Credits: {auth.credits}
           </li>,
           <li key="3">
-            <a href={process.env.REACT_APP_LOGOUT}>Logout</a>
+            <a href="/auth/logout">Logout</a>
           </li>
         ];
     }

@@ -2,22 +2,39 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { fetchSurveys, deleteSurvey } from '../../store/actions';
+import ModalLayout from '../modal/ModalLayout';
+import { fetchSurveys } from '../../store/actions';
 
 class SurveyList extends Component {
+  state = {
+    removingSurvey: null,
+    modal: false
+  };
+
   componentDidMount() {
     this.props.fetchSurveys();
   }
 
+  toggleModal = (id) => {
+    this.setState({
+      removingSurvey: id,
+      modal: !this.state.modal
+    });
+  };
+
   renderSurveys = () =>
-    this.props.surveys.reverse().map(survey => (
-      <div className="card" key={survey._id}>
+    this.props.surveys.map(survey => (
+      <div className="card" key={survey._id} style={{ position: 'relative' }}>
+        <i
+          style={{ position: 'absolute', right: 0, cursor: 'pointer' }}
+          className="material-icons"
+          onClick={() => this.toggleModal(survey._id)}
+        >
+          close
+        </i>
         <div className="card-content">
           <span className="card-title">{survey.title}</span>
           <p>{survey.body}</p>
-          <button type="button" onClick={() => this.props.deleteSurvey(survey._id)}>
-            123
-          </button>
           <p className="right">Sent On: {new Date(survey.dateSent).toLocaleDateString()}</p>
         </div>
         <div className="card-action row">
@@ -40,14 +57,22 @@ class SurveyList extends Component {
     ));
 
   render() {
-    return <div>{this.renderSurveys()}</div>;
+    const modalLayout = this.state.modal ? (
+      <ModalLayout id={this.state.removingSurvey} toggleModal={this.toggleModal} />
+    ) : null;
+
+    return (
+      <div>
+        {modalLayout}
+        {this.renderSurveys()}
+      </div>
+    );
   }
 }
 
 SurveyList.propTypes = {
   surveys: PropTypes.instanceOf(Array).isRequired,
-  fetchSurveys: PropTypes.func.isRequired,
-  deleteSurvey: PropTypes.func.isRequired
+  fetchSurveys: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -56,5 +81,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchSurveys, deleteSurvey }
+  { fetchSurveys }
 )(SurveyList);
