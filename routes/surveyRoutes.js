@@ -45,6 +45,15 @@ router.post('/', requireLogin, requireCredits, async (req, res) => {
   }
 });
 
+router.delete('/:surveyId', requireLogin, async (req, res) => {
+  await Survey.findByIdAndDelete({ _id: req.params.surveyId });
+  const updatedSurveys = await Survey.find({ _user: req.user.id }).select({
+    recipients: false
+  });
+
+  res.send(updatedSurveys);
+});
+
 router.get('/:surveyId/:choice', (req, res) => {
   res.send('Thanks for voting!');
 });

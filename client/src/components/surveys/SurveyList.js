@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { fetchSurveys } from '../../store/actions';
+import { fetchSurveys, deleteSurvey } from '../../store/actions';
 
 class SurveyList extends Component {
   componentDidMount() {
@@ -15,6 +15,9 @@ class SurveyList extends Component {
         <div className="card-content">
           <span className="card-title">{survey.title}</span>
           <p>{survey.body}</p>
+          <button type="button" onClick={() => this.props.deleteSurvey(survey._id)}>
+            123
+          </button>
           <p className="right">Sent On: {new Date(survey.dateSent).toLocaleDateString()}</p>
         </div>
         <div className="card-action row">
@@ -43,7 +46,8 @@ class SurveyList extends Component {
 
 SurveyList.propTypes = {
   surveys: PropTypes.instanceOf(Array).isRequired,
-  fetchSurveys: PropTypes.func.isRequired
+  fetchSurveys: PropTypes.func.isRequired,
+  deleteSurvey: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -52,5 +56,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchSurveys }
+  { fetchSurveys, deleteSurvey }
 )(SurveyList);
