@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import { reduxForm } from 'redux-form';
 
 import SurveyForm from './SurveyForm';
-import SurveyFormReview from './SurveyFormReview';
+import Spinner from '../utils/Spinner';
+
+const SurveyFormReview = lazy(() => import('./SurveyFormReview'));
 
 class SurveyNew extends Component {
   state = {
@@ -11,22 +13,18 @@ class SurveyNew extends Component {
 
   renderContent = () => {
     if (this.state.showFormReview) {
-      return (
-        <SurveyFormReview
-          onCancel={() => this.setState({ showFormReview: false })}
-        />
-      );
+      return <SurveyFormReview onCancel={() => this.setState({ showFormReview: false })} />;
     }
 
-    return (
-      <SurveyForm
-        onSurveySubmit={() => this.setState({ showFormReview: true })}
-      />
-    );
+    return <SurveyForm onSurveySubmit={() => this.setState({ showFormReview: true })} />;
   };
 
   render() {
-    return <div>{this.renderContent()}</div>;
+    return (
+      <Suspense fallback={<Spinner />}>
+        <div>{this.renderContent()}</div>
+      </Suspense>
+    );
   }
 }
 

@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { fetchUser } from '../store/actions';
 import 'materialize-css/dist/css/materialize.min.css';
 
-import Header from './Header';
-import Landing from './Landing';
-import Dashboard from './Dashboard';
-import SurveyNew from './surveys/SurveyNew';
+import Header from './nav/Header';
+import Landing from './nav/Landing';
+import Spinner from './utils/Spinner';
+
+const Dashboard = lazy(() => import('./dashboard/Dashboard'));
+const SurveyNew = lazy(() => import('./surveys/SurveyNew'));
 
 class App extends Component {
   componentDidMount() {
@@ -21,10 +23,12 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="container" style={containerStyles}>
-          <Header />
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/surveys" component={Dashboard} />
-          <Route exact path="/surveys/new" component={SurveyNew} />
+          <Suspense fallback={<Spinner />}>
+            <Header />
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/surveys" component={Dashboard} />
+            <Route exact path="/surveys/new" component={SurveyNew} />
+          </Suspense>
         </div>
       </BrowserRouter>
     );

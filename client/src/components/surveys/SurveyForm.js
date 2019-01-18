@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { reduxForm, Field } from 'redux-form';
 
 import SurveyField from './SurveyField';
-import validateEmails from '../../utils/validateEmails';
+import validateEmails from '../utils/validateEmails';
 import formFields from './formFields';
 
 const SurveyForm = ({ handleSubmit, onSurveySubmit }) => (
@@ -24,13 +24,7 @@ const SurveyForm = ({ handleSubmit, onSurveySubmit }) => (
 
 function renderFields() {
   return formFields.map(({ label, name }) => (
-    <Field
-      key={name}
-      component={SurveyField}
-      type="text"
-      label={label}
-      name={name}
-    />
+    <Field key={name} component={SurveyField} type="text" label={label} name={name} />
   ));
 }
 

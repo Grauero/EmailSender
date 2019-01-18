@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import StripeCheckout from 'react-stripe-checkout';
 import { connect } from 'react-redux';
 
-import { handleToken } from '../store/actions';
+import { handleToken } from '../../store/actions';
 
 const Payments = ({ handleToken }) => (
   <StripeCheckout

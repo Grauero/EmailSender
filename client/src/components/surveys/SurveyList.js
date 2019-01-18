@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import ModalLayout from '../modal/ModalLayout';
+import Spinner from '../utils/Spinner';
 import styles from './SurveyListStyles';
 import { fetchSurveys } from '../../store/actions';
+
+const ModalLayout = lazy(() => import('../modal/ModalLayout'));
 
 class SurveyList extends Component {
   state = {
@@ -61,8 +63,10 @@ class SurveyList extends Component {
 
     return (
       <div>
-        {modalLayout}
-        {this.renderSurveys()}
+        <Suspense fallback={<Spinner />}>
+          {modalLayout}
+          {this.renderSurveys()}
+        </Suspense>
       </div>
     );
   }

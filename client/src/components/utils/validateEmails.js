@@ -4,7 +4,7 @@ function validateEmails(emails = '') {
   const invalidEmails = emails
     .split(',')
     .map(email => email.trim())
-    .filter(email => email !== '' && !emailPattern.test(email)); 
+    .filter(email => email !== '' && !emailPattern.test(email));
 
   if (invalidEmails.length) {
     return `These emails are invalid ${invalidEmails}`;
