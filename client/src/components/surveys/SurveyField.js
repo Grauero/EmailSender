@@ -1,13 +1,18 @@
 import React from 'react';
 
-const SurveyField = ({ input, label, meta: { error, touched } }) => (
-  <div>
-    <label>{label}</label>
-    <input {...input} style={{ marginBottom: '5px' }} />
-    <div className="red-text" style={{ marginBottom: '20px' }}>
-      {touched && error}
+const SurveyField = ({ input, label, meta: { error, touched } }) => {
+  const inputStyles = { marginBottom: '5px' };
+  const divStyles = { marginBottom: '20px' };
+
+  return (
+    <div>
+      <label>{label}</label>
+      <input {...input} style={inputStyles} />
+      <div className="red-text" style={divStyles}>
+        {touched && error}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default SurveyField;

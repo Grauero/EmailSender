@@ -16,9 +16,11 @@ class App extends Component {
   }
 
   render() {
+    const containerStyles = { minWidth: '520px' };
+
     return (
       <BrowserRouter>
-        <div className="container" style={{ minWidth: '520px' }}>
+        <div className="container" style={containerStyles}>
           <Header />
           <Route exact path="/" component={Landing} />
           <Route exact path="/surveys" component={Dashboard} />

@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import Payments from './Payments';
 
 const Header = ({ auth }) => {
+  const creditsStyles = { margin: '0 10px' };
+  const linkStyles = { marginLeft: '10px' };
+
   function renderContent() {
     switch (auth) {
       case null:
@@ -20,7 +23,7 @@ const Header = ({ auth }) => {
           <li key="1">
             <Payments />
           </li>,
-          <li key="2" style={{ margin: '0 10px' }}>
+          <li key="2" style={creditsStyles}>
             Credits: {auth.credits}
           </li>,
           <li key="3">
@@ -33,11 +36,7 @@ const Header = ({ auth }) => {
   return (
     <nav>
       <div className="nav-wrapper">
-        <Link
-          to={auth ? '/surveys' : '/'}
-          className="left brand-logo"
-          style={{ marginLeft: '10px' }}
-        >
+        <Link to={auth ? '/surveys' : '/'} className="left brand-logo" style={linkStyles}>
           <i className="material-icons left">email</i>EmailSender
         </Link>
         <ul className="right">{renderContent()}</ul>

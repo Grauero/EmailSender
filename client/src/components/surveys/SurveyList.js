@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import ModalLayout from '../modal/ModalLayout';
+import styles from './SurveyListStyles';
 import { fetchSurveys } from '../../store/actions';
 
 class SurveyList extends Component {
@@ -24,9 +25,9 @@ class SurveyList extends Component {
 
   renderSurveys = () =>
     this.props.surveys.map(survey => (
-      <div className="card" key={survey._id} style={{ position: 'relative' }}>
+      <div className="card" key={survey._id} style={styles.cardStyles}>
         <i
-          style={{ position: 'absolute', right: 0, cursor: 'pointer' }}
+          style={styles.closeStyles}
           className="material-icons"
           onClick={() => this.toggleModal(survey._id)}
         >
@@ -40,17 +41,14 @@ class SurveyList extends Component {
         <div className="card-action row">
           <span
             className="green-text text-darken-2 col m12 l6"
-            style={{ letterSpacing: '2px', marginTop: '10px', textAlign: 'center' }}
+            style={styles.positiveFeedbackStyles}
           >
             Number Of Positive Feedbacks:
-            <span style={{ fontSize: '1.5em' }}> {survey.yes}</span>
+            <span style={styles.responseStyles}> {survey.yes}</span>
           </span>
-          <span
-            className="red-text text-darken-3 col m12 l6"
-            style={{ letterSpacing: '2px', marginTop: '10px', textAlign: 'center' }}
-          >
+          <span className="red-text text-darken-3 col m12 l6" style={styles.negativeFeedbackStyles}>
             Number Of Negative Feedbacks:
-            <span style={{ fontSize: '1.5em' }}> {survey.no}</span>
+            <span style={styles.responseStyles}> {survey.no}</span>
           </span>
         </div>
       </div>
