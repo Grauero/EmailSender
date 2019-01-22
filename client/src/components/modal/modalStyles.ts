@@ -1,5 +1,7 @@
-const modalStyles = {
-  zIndex: '10000',
+import { CSSProperties } from 'react';
+
+const modalStyles: CSSProperties = {
+  zIndex: 10000,
   backgroundColor: 'rgba(0, 0, 0, 0.5)',
   position: 'fixed',
   top: 0,
@@ -9,8 +11,8 @@ const modalStyles = {
   textAlign: 'center'
 };
 
-const messageStyles = {
-  zIndex: '10000',
+const messageStyles: CSSProperties = {
+  zIndex: 10000,
   backgroundColor: 'rgba(255, 255, 255, .9)',
   width: '50%',
   textAlign: 'center',
@@ -18,17 +20,17 @@ const messageStyles = {
   margin: '15em auto',
   marginLeft: '20%',
   marginRight: '20%',
-  borderRadius: '50px'
+  borderRadius: '30px'
 };
 
-const paragraphStyles = {
-  zIndex: '10000',
+const paragraphStyles: CSSProperties = {
+  zIndex: 10000,
   paddingTop: '10px',
   fontSize: '1.5em'
 };
 
-const buttonStyles = {
-  zIndex: '10000',
+const buttonStyles: CSSProperties = {
+  zIndex: 10000,
   margin: '3em 5%'
 };
 

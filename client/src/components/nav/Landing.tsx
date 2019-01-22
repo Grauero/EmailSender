@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 const Landing = () => {
-  const style = { textAlign: 'center' };
+  const style: CSSProperties = { textAlign: 'center' };
 
   return (
     <div style={style}>

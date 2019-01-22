@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { FETCH_USER, FETCH_SURVEYS } from '../types';
 
-export const fetchUser = () => async (dispatch) => {
+export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
 
   dispatch({
@@ -11,7 +11,7 @@ export const fetchUser = () => async (dispatch) => {
   });
 };
 
-export const handleToken = token => async (dispatch) => {
+export const handleToken = token => async dispatch => {
   const res = await axios.post('/api/stripe', token);
 
   dispatch({
@@ -20,7 +20,7 @@ export const handleToken = token => async (dispatch) => {
   });
 };
 
-export const submitSurvey = (values, history) => async (dispatch) => {
+export const submitSurvey = (values, history) => async dispatch => {
   const res = await axios.post('/api/surveys', values);
   history.push('/surveys');
 
@@ -30,7 +30,7 @@ export const submitSurvey = (values, history) => async (dispatch) => {
   });
 };
 
-export const fetchSurveys = () => async (dispatch) => {
+export const fetchSurveys = () => async dispatch => {
   const res = await axios.get('/api/surveys');
 
   dispatch({
@@ -39,7 +39,7 @@ export const fetchSurveys = () => async (dispatch) => {
   });
 };
 
-export const deleteSurvey = id => async (dispatch) => {
+export const deleteSurvey = id => async dispatch => {
   const res = await axios.delete(`/api/surveys/${id}`);
 
   dispatch({
