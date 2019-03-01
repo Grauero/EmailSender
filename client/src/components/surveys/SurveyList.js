@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Spinner from '../utils/Spinner';
-import styles from './SurveyListStyles';
 import { fetchSurveys } from '../../store/actions';
 
 const ModalLayout = lazy(() => import('../modal/ModalLayout'));
@@ -18,7 +17,7 @@ class SurveyList extends Component {
     this.props.fetchSurveys();
   }
 
-  toggleModal = (id) => {
+  toggleModal = id => {
     this.setState({
       removingSurvey: id,
       modal: !this.state.modal
@@ -27,10 +26,10 @@ class SurveyList extends Component {
 
   renderSurveys = () =>
     this.props.surveys.map(survey => (
-      <div className="card" key={survey._id} style={styles.cardStyles}>
+      <div className="card survey-card" key={survey._id}>
         <i
-          style={styles.closeStyles}
           className="material-icons"
+          style={{ position: 'absolute', right: 0, cursor: 'pointer' }}
           onClick={() => this.toggleModal(survey._id)}
         >
           close
@@ -38,19 +37,18 @@ class SurveyList extends Component {
         <div className="card-content">
           <span className="card-title">{survey.title}</span>
           <p>{survey.body}</p>
-          <p className="right">Sent On: {new Date(survey.dateSent).toLocaleDateString()}</p>
+          <p className="right">
+            Sent On: {new Date(survey.dateSent).toLocaleDateString()}
+          </p>
         </div>
         <div className="card-action row">
-          <span
-            className="green-text text-darken-2 col m12 l6"
-            style={styles.positiveFeedbackStyles}
-          >
+          <span className="green-text text-darken-2 col m12 l6 positive-response">
             Number Of Positive Feedbacks:
-            <span style={styles.responseStyles}> {survey.yes}</span>
+            <span className="response"> {survey.yes}</span>
           </span>
-          <span className="red-text text-darken-3 col m12 l6" style={styles.negativeFeedbackStyles}>
+          <span className="red-text text-darken-3 col m12 l6 negative-response">
             Number Of Negative Feedbacks:
-            <span style={styles.responseStyles}> {survey.no}</span>
+            <span className="response"> {survey.no}</span>
           </span>
         </div>
       </div>
@@ -58,7 +56,10 @@ class SurveyList extends Component {
 
   render() {
     const modalLayout = this.state.modal ? (
-      <ModalLayout id={this.state.removingSurvey} toggleModal={this.toggleModal} />
+      <ModalLayout
+        id={this.state.removingSurvey}
+        toggleModal={this.toggleModal}
+      />
     ) : null;
 
     return (

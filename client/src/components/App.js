@@ -8,6 +8,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 import Header from './nav/Header';
 import Landing from './nav/Landing';
 import Spinner from './utils/Spinner';
+import './App.css';
 
 const Dashboard = lazy(() => import('./dashboard/Dashboard'));
 const SurveyNew = lazy(() => import('./surveys/SurveyNew'));
@@ -18,11 +19,9 @@ class App extends Component {
   }
 
   render() {
-    const containerStyles = { minWidth: '520px' };
-
     return (
       <BrowserRouter>
-        <div className="container" style={containerStyles}>
+        <div className="container">
           <Suspense fallback={<Spinner />}>
             <Header />
             <Route exact path="/" component={Landing} />

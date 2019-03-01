@@ -20,7 +20,7 @@ const messageStyles: CSSProperties = {
   margin: '15em auto',
   marginLeft: '20%',
   marginRight: '20%',
-  borderRadius: '30px'
+  borderRadius: '20px'
 };
 
 const paragraphStyles: CSSProperties = {
