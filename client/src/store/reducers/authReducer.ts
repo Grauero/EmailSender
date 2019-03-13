@@ -1,17 +1,16 @@
-import { FETCH_USER } from '../types';
+import { Reducer } from 'redux';
+import { ActionTypes, AuthAction } from '../types';
 
-const initialState: null | boolean | object = null;
+export type AuthState = null | boolean | object;
 
-interface Action {
-  type: string;
-  payload: any;
-}
-
-export default function authReducer(state = initialState, action: Action) {
+export const authReducer: Reducer<AuthState, AuthAction> = (
+  state = null,
+  action
+) => {
   switch (action.type) {
-    case FETCH_USER:
+    case ActionTypes.FETCH_USER:
       return action.payload || false;
     default:
       return state;
   }
-}
+};

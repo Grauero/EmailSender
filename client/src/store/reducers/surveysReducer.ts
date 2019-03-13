@@ -1,17 +1,16 @@
-import { FETCH_SURVEYS } from '../types';
+import { Reducer } from 'redux';
+import { ActionTypes, SurveyAction } from '../types';
 
-const initialState = [];
+export type SurveyState = any[] | boolean;
 
-interface Action {
-  type: string;
-  payload: any;
-}
-
-export default function(state = initialState, action: Action) {
+export const surveysReducer: Reducer<SurveyState, SurveyAction> = (
+  state = [],
+  action
+) => {
   switch (action.type) {
-    case FETCH_SURVEYS:
-      return action.payload;
+    case ActionTypes.FETCH_SURVEYS:
+      return action.payload || false;
     default:
       return state;
   }
-}
+};
