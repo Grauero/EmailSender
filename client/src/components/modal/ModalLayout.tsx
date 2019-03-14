@@ -6,8 +6,8 @@ import { fetchSurveys, deleteSurvey } from '../../store/actions';
 import styles from './modalStyles';
 
 interface IModalLayout extends ReturnType<typeof mapDispatchToProps> {
-  id: string;
-  toggleModal: () => void;
+  id: string | null;
+  toggleModal: (id?: any) => void;
 }
 
 const ModalLayout: React.FC<IModalLayout> = props => {

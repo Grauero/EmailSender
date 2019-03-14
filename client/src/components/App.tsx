@@ -9,16 +9,17 @@ import Header from './nav/Header';
 import Landing from './nav/Landing';
 import Spinner from './utils/Spinner';
 import './App.css';
+import { Dispatch, bindActionCreators } from 'redux';
 
 const Dashboard = lazy(() => import('./dashboard/Dashboard'));
 const SurveyNew = lazy(() => import('./surveys/SurveyNew'));
 
-class App extends Component {
-  componentDidMount() {
+class App extends Component<ReturnType<typeof mapDispatchToProps>> {
+  public componentDidMount() {
     this.props.fetchUser();
   }
 
-  render() {
+  public render() {
     return (
       <BrowserRouter>
         <div className="container">
@@ -34,11 +35,11 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  fetchUser: PropTypes.func.isRequired
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return bindActionCreators({ fetchUser }, dispatch);
 };
 
 export default connect(
   null,
-  { fetchUser }
+  mapDispatchToProps
 )(App);

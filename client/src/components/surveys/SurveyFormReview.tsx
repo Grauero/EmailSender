@@ -1,18 +1,27 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Dispatch, bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 
 import formFields from './formFields';
 import { submitSurvey } from '../../store/actions';
+import { IAppState } from '../../store/reducers';
 
-const SurveyFormReview = ({
-  history, formValues, onCancel, submitSurvey
-}) => {
+type ReduxProps = ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDispatchToProps>;
+
+export interface ISurveyFormReview extends ReduxProps {
+  onCancel: () => void;
+  history: History;
+}
+
+const SurveyFormReview: React.FC<ISurveyFormReview> = props => {
+  const { formValues, onCancel, submitSurvey, history } = props;
+
   const reviewFields = formFields.map(({ name, label }) => (
     <div key={name}>
       <label>{label}</label>
-      <div>{formValues[name]}</div>
+      <div>{formValues ? formValues[name] : ''}</div>
     </div>
   ));
 
@@ -20,7 +29,11 @@ const SurveyFormReview = ({
     <div>
       <h5>Confirm your entries</h5>
       {reviewFields}
-      <button type="button" className="yellow darken-3 white-text btn-flat" onClick={onCancel}>
+      <button
+        type="button"
+        className="yellow darken-3 white-text btn-flat"
+        onClick={onCancel}
+      >
         Back
       </button>
       <button
@@ -35,18 +48,15 @@ const SurveyFormReview = ({
   );
 };
 
-SurveyFormReview.propTypes = {
-  history: PropTypes.instanceOf(Object).isRequired,
-  formValues: PropTypes.instanceOf(Object).isRequired,
-  onCancel: PropTypes.func.isRequired,
-  submitSurvey: PropTypes.func.isRequired
-};
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state: IAppState) => ({
   formValues: state.form.surveyForm.values
 });
 
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return bindActionCreators({ submitSurvey }, dispatch);
+};
+
 export default connect(
   mapStateToProps,
-  { submitSurvey }
+  mapDispatchToProps
 )(withRouter(SurveyFormReview));

@@ -2,10 +2,12 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "resolutions": {
+    "**/@types/react": "15.6.20"
+  },
   "dependencies": {
     "@types/jest": "^23.3.13",
     "@types/node": "^10.12.18",
-    "@types/react": "^16.7.20",
     "@types/react-dom": "^16.0.11",
     "axios": "^0.18.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -16,7 +18,7 @@
     "react-dom": "^16.6.3",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1",
+    "react-scripts": "^2.1.8",
     "react-stripe-checkout": "^2.6.3",
     "redux": "^4.0.1",
     "redux-form": "^7.4.2",
@@ -39,6 +41,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@types/react": "^16.8.8",
     "@types/react-redux": "^7.0.0",
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.17.0",
