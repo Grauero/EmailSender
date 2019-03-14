@@ -1,14 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { MouseEvent } from 'react';
+import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { fetchSurveys, deleteSurvey } from '../../store/actions';
 import styles from './modalStyles';
 
-const ModalLayout = props => {
+interface IModalLayout extends ReturnType<typeof mapDispatchToProps> {
+  id: string;
+  toggleModal: () => void;
+}
+
+const ModalLayout: React.FC<IModalLayout> = props => {
   const { id, toggleModal, fetchSurveys, deleteSurvey } = props;
 
-  const handleClick = e => e.stopPropagation();
+  const handleClick = (e: MouseEvent) => e.stopPropagation();
   const handleButtonClick = () => {
     deleteSurvey(id);
     fetchSurveys();
@@ -42,7 +47,11 @@ const ModalLayout = props => {
   );
 };
 
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return bindActionCreators({ fetchSurveys, deleteSurvey }, dispatch);
+};
+
 export default connect(
   null,
-  { fetchSurveys, deleteSurvey }
+  mapDispatchToProps
 )(ModalLayout);

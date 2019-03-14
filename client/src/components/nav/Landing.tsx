@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 
-const Landing = () => {
+const Landing: React.FC<{}> = () => {
   const style: CSSProperties = { textAlign: 'center' };
 
   return (

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import SurveyList from '../surveys/SurveyList';
 
-const Dashboard = () => (
+const Dashboard: React.FC<{}> = () => (
   <div>
     <SurveyList />
     <div className="fixed-action-btn">

@@ -6,9 +6,10 @@ import { ActionTypes, AuthAction, SurveyAction } from '../types';
 import { AuthState } from '../reducers/authReducer';
 import { SurveyState } from '../reducers/surveysReducer';
 
-export const fetchUser: ActionCreator<
+export type IfetchUser = ActionCreator<
   ThunkAction<Promise<any>, AuthState, null, AuthAction>
-> = () => async (dispatch: Dispatch) => {
+>;
+export const fetchUser: IfetchUser = () => async (dispatch: Dispatch) => {
   const res = await axios.get('/api/current_user');
 
   dispatch({
@@ -17,9 +18,12 @@ export const fetchUser: ActionCreator<
   });
 };
 
-export const handleToken: ActionCreator<
+export type IhandleToken = ActionCreator<
   ThunkAction<Promise<any>, AuthState, null, AuthAction>
-> = token => async (dispatch: Dispatch) => {
+>;
+export const handleToken: IhandleToken = token => async (
+  dispatch: Dispatch
+) => {
   const res = await axios.post('/api/stripe', token);
 
   dispatch({
@@ -28,9 +32,12 @@ export const handleToken: ActionCreator<
   });
 };
 
-export const submitSurvey: ActionCreator<
+export type IsubmitSurvey = ActionCreator<
   ThunkAction<Promise<any>, AuthState, null, AuthAction>
-> = (values, history) => async (dispatch: Dispatch) => {
+>;
+export const submitSurvey: IsubmitSurvey = (values, history) => async (
+  dispatch: Dispatch
+) => {
   const res = await axios.post('/api/surveys', values);
   history.push('/surveys');
 
@@ -40,9 +47,10 @@ export const submitSurvey: ActionCreator<
   });
 };
 
-export const fetchSurveys: ActionCreator<
+export type IfetchSurvey = ActionCreator<
   ThunkAction<Promise<any>, SurveyState, null, SurveyAction>
-> = () => async (dispatch: Dispatch) => {
+>;
+export const fetchSurveys: IfetchSurvey = () => async (dispatch: Dispatch) => {
   const res = await axios.get('/api/surveys');
 
   dispatch({
@@ -51,9 +59,10 @@ export const fetchSurveys: ActionCreator<
   });
 };
 
-export const deleteSurvey: ActionCreator<
+export type IdeleteSurvey = ActionCreator<
   ThunkAction<Promise<any>, SurveyState, null, SurveyAction>
-> = id => async (dispatch: Dispatch) => {
+>;
+export const deleteSurvey: IdeleteSurvey = id => async (dispatch: Dispatch) => {
   const res = await axios.delete(`/api/surveys/${id}`);
 
   dispatch({

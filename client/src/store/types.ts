@@ -5,7 +5,7 @@ export enum ActionTypes {
 
 export interface AuthAction {
   type: ActionTypes.FETCH_USER;
-  payload: boolean | object | null;
+  payload: { googleId: string; credits: number } | boolean | null;
 }
 
 export interface SurveyAction {

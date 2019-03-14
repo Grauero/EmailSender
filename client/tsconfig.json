@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["es2018", "dom"],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
     "allowJs": true,
     "skipLibCheck": false,
     "esModuleInterop": true,
@@ -16,5 +19,7 @@
     "jsx": "preserve",
     "noImplicitAny": false
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

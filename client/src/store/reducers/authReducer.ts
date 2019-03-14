@@ -1,7 +1,7 @@
 import { Reducer } from 'redux';
 import { ActionTypes, AuthAction } from '../types';
 
-export type AuthState = null | boolean | object;
+export type AuthState = { googleId: string; credits: number } | boolean | null;
 
 export const authReducer: Reducer<AuthState, AuthAction> = (
   state = null,
