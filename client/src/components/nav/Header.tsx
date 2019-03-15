@@ -22,7 +22,9 @@ function renderContent(auth: AuthState) {
   } else if (!auth) {
     return (
       <li>
-        <a href="/auth/google">Login With Google</a>
+        <a href="/auth/google" className="auth">
+          Login With Google
+        </a>
       </li>
     );
   }
@@ -39,15 +41,12 @@ const Header: React.FC<IHeader> = props => {
 
   return (
     <nav>
-      <div className="nav-wrapper">
-        <Link
-          to={auth ? '/surveys' : '/'}
-          className="left brand-logo"
-          style={{ marginLeft: '10px' }}
-        >
-          <i className="material-icons left">email</i>EmailSender
+      <div className="nav-wrapper container">
+        <Link to={auth ? '/surveys' : '/'} className="logo">
+          <i className="material-icons left">email</i>
+          <h2>EmailSender</h2>
         </Link>
-        <ul className="right">{renderContent(auth)}</ul>
+        <ul>{renderContent(auth)}</ul>
       </div>
     </nav>
   );

@@ -34,7 +34,7 @@ class SurveyNew extends Component<InjectedFormProps<{}>, ISurveyNewState> {
   public render() {
     return (
       <Suspense fallback={<Spinner />}>
-        <div>{this.renderContent()}</div>
+        <div className="container new-survey">{this.renderContent()}</div>
       </Suspense>
     );
   }

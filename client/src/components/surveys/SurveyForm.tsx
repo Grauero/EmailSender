@@ -23,10 +23,13 @@ const SurveyForm: React.FC<InjectedFormProps<{}> & ISurveyForm> = props => {
     <div>
       <form onSubmit={handleSubmit(onSurveySubmit)}>
         {renderFields()}
-        <Link to="/surveys" className="red btn-flat white-text">
+        <Link to="/surveys" className="red btn-flat white-text form-back">
           Cancel
         </Link>
-        <button type="submit" className="teal btn-flat right white-text">
+        <button
+          type="submit"
+          className="teal btn-flat right white-text form-submit"
+        >
           Next
           <i className="material-icons right">done</i>
         </button>

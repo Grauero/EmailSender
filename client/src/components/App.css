@@ -1,79 +1,160 @@
-.container {
-  min-width: '520px';
+/* Common */
+h1,
+h2 {
+  margin-top: 0;
 }
 
-.modal {
-  z-index: 10000;
-  background-color: 'rgba(0, 0, 0, 0.5)';
-  position: 'fixed';
-  top: 0;
-  left: 0;
-  width: '100%';
-  height: '100vh';
-  text-align: 'center';
+.auth {
+  font-size: 1.3em;
 }
 
-.message {
-  z-index: 10000;
-  background-color: 'rgba(255, 255, 255, .9)';
-  width: '50%';
-  text-align: 'center';
-  display: 'inline-block';
-  margin: '15em auto';
-  margin-left: '20%';
-  margin-right: '20%';
-  border-radius: '30px';
+/* Main page */
+.dashboard {
+  height: 90.33vh;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.paragrapgh {
-  z-index: 10000;
-  padding-top: '10px';
-  font-size: '1.5em';
+/* Header */
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
-.button {
-  z-index: 10000;
-  margin: '3em 5%';
+.nav-wrapper h2 {
+  display: inline-block;
+  margin-top: 0.2em;
 }
 
-.credits {
-  margin: '0 10px';
+/* Landing */
+.landing {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
-.link {
-  margin-left: '10px';
+.landing > p {
+  font-size: 3rem;
 }
 
-.input {
-  margin-bottom: '5px';
+.landing > *,
+h2 {
+  font-family: 'Bilbo', cursive;
 }
 
-.touched {
-  margin-bottom: '20px';
+.landing img {
+  margin: 0 auto;
+}
+
+/* Dashboard */
+.content {
+  width: 100%;
+}
+
+/* Surveys */
+.cards {
+  margin: 2em 6em;
+}
+
+.card {
+  flex: 1 24em;
+}
+
+.card i {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
 }
 
 .survey-card {
-  position: 'relative';
-}
-
-.close {
-  position: 'absolute';
-  right: 0;
-  cursor: 'pointer';
+  position: relative;
 }
 
 .response {
-  font-size: '1.5em';
+  font-size: 1.5em;
 }
 
 .positive-response {
-  letter-spacing: '2px';
-  margin-top: '10px';
-  text-align: 'center';
+  margin-top: 10px;
+  text-align: center;
+  letter-spacing: 2px;
 }
 
 .negative-response {
-  letter-spacing: '2px';
-  margin-top: '10px';
-  text-align: 'center';
+  margin-top: 10px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+/* Survey Field */
+.input {
+  margin-bottom: 5px;
+}
+
+.touched {
+  margin-bottom: 20px;
+}
+
+.form-submit,
+.form-back {
+  margin: 1em 0;
+}
+
+@media only screen and (max-width: 620px) {
+  nav {
+    height: 18vh;
+  }
+  .nav-wrapper {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    line-height: 44px;
+  }
+  .nav-wrapper h2 {
+    margin-bottom: 0;
+  }
+  .dashboard {
+    height: 82vh;
+  }
+  .landing {
+    height: 100%;
+  }
+  .new-survey {
+    height: 90%;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .landing h1 {
+    margin-top: 0.8em;
+  }
+  .landing img {
+    width: 200px;
+  }
+}
+
+@media only screen and (max-height: 400px) {
+  .dashboard {
+    height: 100%;
+  }
+  .landing {
+    height: 82vh;
+  }
+  .landing h1 {
+    margin-top: 0.8em;
+    font-size: 8em;
+  }
+  .landing img {
+    display: none;
+  }
+  form > div {
+    margin-bottom: 3em;
+    height: 15vh;
+  }
+  .preview {
+    height: 78vh;
+  }
 }

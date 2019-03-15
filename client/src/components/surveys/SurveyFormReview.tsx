@@ -26,19 +26,19 @@ const SurveyFormReview: React.FC<ISurveyFormReview> = props => {
   ));
 
   return (
-    <div>
+    <div className="preview">
       <h5>Confirm your entries</h5>
       {reviewFields}
       <button
         type="button"
-        className="yellow darken-3 white-text btn-flat"
+        className="yellow darken-3 white-text btn-flat form-back"
         onClick={onCancel}
       >
         Back
       </button>
       <button
         type="button"
-        className="green btn-flat right white-text"
+        className="green btn-flat right white-text form-submit"
         onClick={() => submitSurvey(formValues, history)}
       >
         Send Survey

@@ -1,14 +1,11 @@
 import React, { CSSProperties } from 'react';
 
-const Landing: React.FC<{}> = () => {
-  const style: CSSProperties = { textAlign: 'center' };
-
-  return (
-    <div style={style}>
-      <h1>EmailSender</h1>
-      Collect feedback from your users
-    </div>
-  );
-};
+const Landing: React.FC<{}> = () => (
+  <div className="landing">
+    <h1>EmailSender</h1>
+    <img src="mail.png" alt="" width="300px" />
+    <p>Collect feedback from your users</p>
+  </div>
+);
 
 export default Landing;

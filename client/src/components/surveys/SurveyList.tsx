@@ -3,35 +3,16 @@ import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import Spinner from '../utils/Spinner';
-import { fetchSurveys } from '../../store/actions';
+import { fetchSurveys, deleteSurvey } from '../../store/actions';
 import { IAppState } from '../../store/reducers';
-
-const ModalLayout = lazy(() => import('../modal/ModalLayout'));
 
 type ReduxProps = ReturnType<typeof mapStateToProps> &
   ReturnType<typeof mapDispatchToProps>;
 
-interface ISurveyListState {
-  removingSurvey: string | null;
-  modal: boolean;
-}
-
-class SurveyList extends Component<{} & ReduxProps, ISurveyListState> {
-  public state = {
-    removingSurvey: null,
-    modal: false
-  };
-
+class SurveyList extends Component<{} & ReduxProps, {}> {
   public componentDidMount() {
     this.props.fetchSurveys();
   }
-
-  private toggleModal = id => {
-    this.setState({
-      removingSurvey: id,
-      modal: !this.state.modal
-    });
-  };
 
   private renderSurveys = () => {
     if (this.props.surveys instanceof Array) {
@@ -39,8 +20,7 @@ class SurveyList extends Component<{} & ReduxProps, ISurveyListState> {
         <div className="card survey-card" key={survey._id}>
           <i
             className="material-icons"
-            style={{ position: 'absolute', right: 0, cursor: 'pointer' }}
-            onClick={() => this.toggleModal(survey._id)}
+            onClick={() => this.deleteSurvey(survey._id)}
           >
             close
           </i>
@@ -66,20 +46,15 @@ class SurveyList extends Component<{} & ReduxProps, ISurveyListState> {
     }
   };
 
-  public render() {
-    const modalLayout = this.state.modal ? (
-      <ModalLayout
-        id={this.state.removingSurvey}
-        toggleModal={this.toggleModal}
-      />
-    ) : null;
+  private deleteSurvey = async id => {
+    this.props.deleteSurvey(id);
+    this.props.fetchSurveys();
+  };
 
+  public render() {
     return (
-      <div>
-        <Suspense fallback={<Spinner />}>
-          {modalLayout}
-          {this.renderSurveys()}
-        </Suspense>
+      <div className="cards">
+        <Suspense fallback={<Spinner />}>{this.renderSurveys()}</Suspense>
       </div>
     );
   }
@@ -90,7 +65,7 @@ const mapStateToProps = (state: IAppState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
-  return bindActionCreators({ fetchSurveys }, dispatch);
+  return bindActionCreators({ fetchSurveys, deleteSurvey }, dispatch);
 };
 
 export default connect(

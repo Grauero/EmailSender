@@ -1,7 +1,22 @@
 {
-  "name": "email-sender",
+  "name": "email-sender-server",
+  "description": "Application for collecting feedback from users",
   "version": "1.0.0",
-  "description": "Bulk email application",
+  "author": "Grauero",
+  "keywords": [
+    "React",
+    "Redux",
+    "Node",
+    "Express",
+    "MongoDB",
+    "Email"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Grauero/EmailSender.git"
+  },
+  "license": "ISC",
+  "private": true,
   "main": "index.js",
   "engines": {
     "node": "8.1.1",
@@ -15,9 +30,6 @@
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "webhook": "forever sendgrid_webhook.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",

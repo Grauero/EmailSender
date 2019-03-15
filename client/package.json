@@ -1,6 +1,21 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "email-sender-client",
+  "description": "Application for collecting feedback from users",
+  "version": "1.0.0",
+  "author": "Grauero",
+  "keywords": [
+    "React",
+    "Redux",
+    "Node",
+    "Express",
+    "MongoDB",
+    "Email"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Grauero/EmailSender.git"
+  },
+  "license": "ISC",
   "private": true,
   "resolutions": {
     "**/@types/react": "15.6.20"

@@ -64,7 +64,7 @@ export type IdeleteSurvey = ActionCreator<
 >;
 export const deleteSurvey: IdeleteSurvey = id => async (dispatch: Dispatch) => {
   const res = await axios.delete(`/api/surveys/${id}`);
-
+  console.log(res);
   dispatch({
     type: ActionTypes.FETCH_SURVEYS,
     payload: res.data
