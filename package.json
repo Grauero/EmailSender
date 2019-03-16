@@ -23,12 +23,12 @@
     "npm": "5.0.3"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node ./build/index.js",
     "server": "ts-node-dev --respawn --transpileOnly ./index.ts",
-    "build": "tsc",
+    "tsc": "tsc",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build && npm install --prefix client && npm run build --prefix client",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "webhook": "forever sendgrid_webhook.js"
   },
   "dependencies": {
@@ -43,7 +43,8 @@
     "passport-google-oauth20": "^1.0.0",
     "path-parser": "^4.2.0",
     "sendgrid": "^5.2.3",
-    "stripe": "^6.17.0"
+    "stripe": "^6.17.0",
+    "tsc": "^1.20150623.0"
   },
   "devDependencies": {
     "@types/cookie-session": "^2.0.36",
