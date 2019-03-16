@@ -1,11 +1,11 @@
-const express = require('express');
-let stripe = require('stripe');
+import express from 'express';
+import Stripe from 'stripe';
 
-const keys = require('../config/keys');
-const requireLogin = require('../middlewares/requireLogin');
+import keys from '../config/keys';
+import requireLogin from '../middlewares/requireLogin';
 
 const router = express.Router();
-stripe = stripe(keys.stripeSecretKey);
+const stripe = new Stripe(keys.stripeSecretKey);
 
 router.get('/current_user', (req, res) => {
   res.send(req.user);
@@ -25,4 +25,4 @@ router.post('/stripe', requireLogin, async (req, res) => {
   res.send(updatedUser);
 });
 
-module.exports = router;
+export default router;

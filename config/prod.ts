@@ -1,4 +1,6 @@
-module.exports = {
+import { IKeys } from './keys';
+
+export default {
   googleClientID: process.env.GOOGLE_CLIENT_ID,
   googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
   mongoURI: process.env.MONGO_URI,
@@ -7,4 +9,4 @@ module.exports = {
   stripeSecretKey: process.env.STRIPE_SECRET_KEY,
   sendGridKey: process.env.SEND_GRID_KEY,
   redirectDomain: process.env.REDIRECT_DOMAIN
-};
+} as IKeys;

@@ -1,7 +1,7 @@
-const passport = require('passport');
-const express = require('express');
+import express from 'express';
+import passport from 'passport';
 
-const keys = require('../config/keys');
+import keys from '../config/keys';
 
 const router = express.Router();
 
@@ -24,4 +24,4 @@ router.get('/logout', (req, res) => {
   res.redirect(`${keys.redirectDomain}/`);
 });
 
-module.exports = router;
+export default router;

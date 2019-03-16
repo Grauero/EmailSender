@@ -1,7 +1,7 @@
+import keys from '../config/keys';
+
 const sendgrid = require('sendgrid');
 const helper = sendgrid.mail;
-
-const keys = require('../config/keys');
 
 class Mailer extends helper.Mail {
   constructor({ subject, recipients }, content) {
@@ -53,4 +53,4 @@ class Mailer extends helper.Mail {
   }
 }
 
-module.exports = Mailer;
+export default Mailer;
