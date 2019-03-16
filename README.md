@@ -25,6 +25,6 @@ Registration/Authorization done with Google OAuth 2.0 strategy
 
 ### Used tools:
   1. [TypeScript](https://typescriptlang.org) + [React](https://reactjs.org/) + [Redux](https://redux.js.org/) on front
-  2. [Node](https://nodejs.org/) + [Experss](https://expressjs.com/) on back
+  2. [TypeScript](https://typescriptlang.org) + [Node](https://nodejs.org/) + [Experss](https://expressjs.com/) on back
   3. [MongoDB](https://www.mongodb.com/) for database
   4. [Stripe](https://stripe.com/) for handling credit cards 
