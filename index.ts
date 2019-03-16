@@ -1,22 +1,21 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cookieSession = require('cookie-session');
-const bodyParser = require('body-parser');
-const passport = require('passport');
+import * as express from 'express';
+import * as mongoose from 'mongoose';
+import * as bodyParser from 'body-parser';
+import * as passport from 'passport';
 
-const auth = require('./routes/authRoutes');
-const api = require('./routes/apiRoutes');
-const survey = require('./routes/surveyRoutes');
-const keys = require('./config/keys');
+import authRoutes from './routes/authRoutes';
+import apiRoutes from './routes/apiRoutes';
+import surveyRoutes from './routes/surveyRoutes';
+import keys from './config/keys';
+
+const cookieSession = require('cookie-session');
 require('./services/passport');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-mongoose.connect(
-  keys.mongoURI,
-  { useNewUrlParser: true }
-);
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
 
+// common middlewares
 app.use(bodyParser.json());
 app.use(
   cookieSession({
@@ -24,12 +23,15 @@ app.use(
     keys: [keys.cookieKey]
   })
 );
+
+// auth middlewares
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/auth', auth);
-app.use('/api/surveys', survey);
-app.use('/api', api);
+// routes
+app.use('/auth', authRoutes);
+app.use('/api/surveys', surveyRoutes);
+app.use('/api', apiRoutes);
 
 if (process.env.NODE_ENV === 'production') {
   // assets for production
@@ -42,4 +44,4 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.listen(PORT);
+app.listen(PORT, () => console.log(`Server on port ${PORT}`));

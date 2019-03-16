@@ -1,27 +1,19 @@
-const passport = require('passport');
-const express = require('express');
-
-const keys = require('../config/keys');
-
-const router = express.Router();
-
-router.get(
-  '/google',
-  passport.authenticate('google', {
+"use strict";
+exports.__esModule = true;
+var express = require("express");
+var passport = require("passport");
+var keys_1 = require("../config/keys");
+var router = express.Router();
+router.get('/google', passport.authenticate('google', {
     scope: ['profile', 'email']
-  }),
-  (req, res) => {
+}), function (req, res) {
     res.send({ auth: 'auth' });
-  }
-);
-
-router.get('/google/callback', passport.authenticate('google'), (req, res) => {
-  res.redirect(`${keys.redirectDomain}/surveys`);
 });
-
-router.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect(`${keys.redirectDomain}/`);
+router.get('/google/callback', passport.authenticate('google'), function (req, res) {
+    res.redirect(keys_1["default"].redirectDomain + "/surveys");
 });
-
-module.exports = router;
+router.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect(keys_1["default"].redirectDomain + "/");
+});
+exports["default"] = router;

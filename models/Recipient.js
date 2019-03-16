@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
-
-const recipientSchema = new mongoose.Schema({
-  email: String,
-  responded: {
-    type: Boolean,
-    default: false
-  }
+"use strict";
+exports.__esModule = true;
+var mongoose_1 = require("mongoose");
+var recipientSchema = new mongoose_1.Schema({
+    email: String,
+    responded: {
+        type: Boolean,
+        "default": false
+    }
 });
-
-module.exports = recipientSchema;
+exports["default"] = recipientSchema;

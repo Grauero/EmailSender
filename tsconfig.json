@@ -1,0 +1,19 @@
+{
+  "target": "es5",
+  "module": "commonjs",
+  "lib": ["es2018", "dom"],
+  "allowJs": true,
+  "compilerOptions": {
+    "outDir": "build"
+  },
+  "rootDir": "./",
+  "exclude": ["node_modules", "client"],
+  "removeComments": true,
+  "strict": true,
+  "noImplicitAny": true,
+  "strictNullChecks": true,
+  "strictFunctionTypes": true,
+  "alwaysStrict": true,
+  "noUnusedLocals": true,
+  "esModuleInterop": true
+}

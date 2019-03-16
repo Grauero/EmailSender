@@ -17,17 +17,18 @@
   },
   "license": "ISC",
   "private": true,
-  "main": "index.js",
+  "main": "build/index.js",
   "engines": {
     "node": "8.1.1",
     "npm": "5.0.3"
   },
   "scripts": {
     "start": "node index.js",
-    "server": "nodemon index.js",
+    "server": "ts-node-dev --respawn --transpileOnly ./index.ts",
+    "build": "tsc",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build && npm install --prefix client && npm run build --prefix client",
     "webhook": "forever sendgrid_webhook.js"
   },
   "dependencies": {
@@ -45,9 +46,19 @@
     "stripe": "^6.17.0"
   },
   "devDependencies": {
+    "@types/cookie-session": "^2.0.36",
+    "@types/express": "^4.16.1",
+    "@types/lodash": "^4.14.123",
+    "@types/mongoose": "^5.3.22",
+    "@types/node": "^11.11.3",
+    "@types/passport": "^1.0.0",
     "@types/react-redux": "^7.0.3",
     "@types/redux-form": "^8.1.0",
     "@types/redux-thunk": "^2.1.0",
-    "forever": "^0.15.3"
+    "@types/stripe": "^6.25.6",
+    "forever": "^0.15.3",
+    "ts-node": "^8.0.3",
+    "ts-node-dev": "^1.0.0-pre.32",
+    "typescript": "^3.3.3333"
   }
 }

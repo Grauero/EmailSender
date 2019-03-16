@@ -1,23 +1,4 @@
-const keys = require('../../config/keys');
-
-function generateTemplate(survey) {
-  return `
-    <html>
-      <body>
-        <div style="text-align: center;">
-          <h3>Give Us Feedback</h3>
-          <p>Please answer the question:</p>
-          <p>${survey.body}</p>
-          <div>
-            <a href="${keys.redirectDomain}/api/surveys/${survey.id}/yes">Yes</a>
-          </div>
-          <div>
-            <a href="${keys.redirectDomain}/api/surveys/${survey.id}/no">No</a>
-          </div>
-        </div>
-      </body>
-    </html>
-  `;
-}
-
-module.exports = generateTemplate;
+"use strict";
+exports.__esModule = true;
+var keys_1 = require("../../config/keys");
+exports["default"] = (function (survey) { return "\n    <html>\n      <body>\n        <div style=\"text-align: center;\">\n          <h3>Give Us Feedback</h3>\n          <p>Please answer the question:</p>\n          <p>" + survey.body + "</p>\n          <div>\n            <a href=\"" + keys_1["default"].redirectDomain + "/api/surveys/" + survey.id + "/yes\">\n              Yes\n            </a>\n          </div>\n          <div>\n            <a href=\"" + keys_1["default"].redirectDomain + "/api/surveys/" + survey.id + "/no\">\n              No\n            </a>\n          </div>\n        </div>\n      </body>\n    </html>\n  "; });
