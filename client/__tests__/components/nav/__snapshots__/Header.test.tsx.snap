@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Credits and Logout button if user is authorized 1`] = `
+<ul>
+  <li
+    key="1"
+  >
+    <Connect(Payments) />
+  </li>
+  <li
+    key="2"
+    style={
+      Object {
+        "margin": "0 10px",
+      }
+    }
+  >
+    Credits: 
+    5
+  </li>
+  <li
+    key="3"
+  >
+    <a
+      href="/auth/logout"
+    >
+      Logout
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`renders Login button if user isnt authorized 1`] = `
+<ul>
+  <li>
+    <a
+      className="auth"
+      href="/auth/google"
+    >
+      Login With Google
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`renders logo 1`] = `
+<Link
+  className="logo"
+  replace={false}
+  to="/"
+>
+  <i
+    className="material-icons left"
+  >
+    email
+  </i>
+  <h2>
+    EmailSender
+  </h2>
+</Link>
+`;

@@ -21,7 +21,7 @@ const Payments: React.FC<IPayments> = props => (
   </StripeCheckout>
 );
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+export const mapDispatchToProps = (dispatch: Dispatch) => {
   return bindActionCreators({ handleToken }, dispatch);
 };
 

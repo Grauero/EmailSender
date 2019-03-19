@@ -19,17 +19,15 @@ function renderContent(auth: AuthState) {
         <a href="/auth/logout">Logout</a>
       </li>
     ];
-  } else if (!auth) {
-    return (
-      <li>
-        <a href="/auth/google" className="auth">
-          Login With Google
-        </a>
-      </li>
-    );
   }
 
-  return;
+  return (
+    <li>
+      <a href="/auth/google" className="auth">
+        Login With Google
+      </a>
+    </li>
+  );
 }
 
 export interface IHeader {
@@ -56,4 +54,5 @@ const mapStateToProps = (state: IAppState) => ({
   auth: state.auth
 });
 
+export { Header };
 export default connect(mapStateToProps)(Header);

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="landing"
+>
+  <h1>
+    EmailSender
+  </h1>
+  <img
+    alt="app logo"
+    src="mail.png"
+    width="300px"
+  />
+  <p>
+    Collect feedback from your users
+  </p>
+</div>
+`;
