@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="content"
+>
+  <Connect(SurveyList) />
+  <div
+    className="fixed-action-btn"
+  >
+    <Link
+      className="btn-floating btn-large red"
+      replace={false}
+      to="/surveys/new"
+    >
+      <i
+        className="material-icons"
+      >
+        add
+      </i>
+    </Link>
+  </div>
+</div>
+`;
