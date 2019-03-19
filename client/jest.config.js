@@ -1,14 +1,15 @@
 module.exports = {
   testEnvironment: 'node',
   verbose: true,
-  setupFilesAfterEnv: ['<rootDir>/mocks/jest.setup.ts'],
+  setupFiles: ['<rootDir>/mocks/jest.setup.ts'],
   moduleNameMapper: {
     '\\.(gif|ttf|eot|svg)$': '<rootDir>/mocks/fileMock.ts'
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  moduleFileExtensions: ['ts', 'tsx', 'js'],
   transform: {
-    '\\.(ts|tsx)$': 'ts-jest'
+    '\\.(ts|tsx|js)$': 'babel-jest'
   },
-  testRegex: '/__tests__/.*\\.(ts|tsx|js)$',
+  transformIgnorePatterns: ['node_modules/'],
+  testRegex: '/__tests__/.*\\.(ts|tsx)$',
   testURL: 'http://localhost:80'
 };

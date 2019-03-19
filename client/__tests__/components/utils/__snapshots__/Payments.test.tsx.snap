@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<ReactStripeCheckout
+  ComponentClass="span"
+  amount={500}
+  className="StripeCheckout"
+  description="$5 for 5 email credits"
+  label="Pay With Card"
+  locale="auto"
+  name="EmailSender"
+  reconfigureOnUpdate={false}
+  stripeKey=""
+  token={[Function]}
+  triggerEvent="onClick"
+>
+  <button
+    className="btn"
+    type="button"
+  >
+    Add Credits
+  </button>
+</ReactStripeCheckout>
+`;

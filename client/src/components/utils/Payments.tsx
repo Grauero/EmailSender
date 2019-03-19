@@ -5,7 +5,7 @@ import StripeCheckout from 'react-stripe-checkout';
 
 import { handleToken } from '../../store/actions';
 
-interface IPayments extends ReturnType<typeof mapDispatchToProps> {}
+export interface IPayments extends ReturnType<typeof mapDispatchToProps> {}
 
 const Payments: React.FC<IPayments> = props => (
   <StripeCheckout
@@ -25,6 +25,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return bindActionCreators({ handleToken }, dispatch);
 };
 
+export { Payments };
 export default connect(
   null,
   mapDispatchToProps
