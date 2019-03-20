@@ -1,13 +1,13 @@
-import keys from '../config/keys';
-
+const keys = require('../config/keys');
 const sendgrid = require('sendgrid');
+
 const helper = sendgrid.mail;
 
 class Mailer extends helper.Mail {
   constructor({ subject, recipients }, content) {
     super();
 
-    this.sgApi = sendgrid(keys.sendGridKey);
+    this.sgApi = sendgrid(keys.default.sendGridKey);
     this.from_email = new helper.Email('no-reply@emaily.com');
     this.subject = subject;
     this.body = new helper.Content('text/html', content);
@@ -53,4 +53,4 @@ class Mailer extends helper.Mail {
   }
 }
 
-export default Mailer;
+module.exports = Mailer;

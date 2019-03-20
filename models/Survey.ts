@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import * as mongoose from 'mongoose';
-=======
-import mongoose from 'mongoose';
->>>>>>> 1ff684f084536a90e45957b452e00d3f33095f10
 
 import recipientSchema, { IRecipient } from './Recipient';
 

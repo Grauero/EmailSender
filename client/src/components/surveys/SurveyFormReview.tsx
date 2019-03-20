@@ -53,7 +53,9 @@ const mapStateToProps = (state: IAppState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
-  return bindActionCreators({ submitSurvey }, dispatch);
+  const r = bindActionCreators({ submitSurvey }, dispatch);
+  console.log(r);
+  return r;
 };
 
 export default connect(
