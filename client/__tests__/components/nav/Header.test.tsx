@@ -3,7 +3,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 
-import { Header } from '../../../src/components/nav/Header';
+import { Header, mapStateToProps } from '../../../src/components/nav/Header';
+import { IAppState } from '../../../src/store/reducers';
 
 test('renders logo', () => {
   const logo = shallow(<Header auth={false} />).find('Link');
@@ -22,4 +23,10 @@ test('renders Credits and Logout button if user is authorized', () => {
   const nav = shallow(<Header auth={props} />).find('ul');
 
   expect(toJSON(nav)).toMatchSnapshot();
+});
+
+test('maps auth value from store to props', () => {
+  const props = mapStateToProps({ auth: false, surveys: [], form: null });
+
+  expect(props).toEqual({ auth: false });
 });

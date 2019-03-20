@@ -50,7 +50,7 @@ const Header: React.FC<IHeader> = props => {
   );
 };
 
-const mapStateToProps = (state: IAppState) => ({
+export const mapStateToProps = (state: IAppState) => ({
   auth: state.auth
 });
 
