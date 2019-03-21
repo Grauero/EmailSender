@@ -4,7 +4,6 @@ import { shallow } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 
 import { Header, mapStateToProps } from '../../../src/components/nav/Header';
-import { IAppState } from '../../../src/store/reducers';
 
 test('renders logo', () => {
   const logo = shallow(<Header auth={false} />).find('Link');

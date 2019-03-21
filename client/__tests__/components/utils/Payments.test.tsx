@@ -1,14 +1,12 @@
 import 'jest';
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Provider } from 'react-redux';
 import toJSON from 'enzyme-to-json';
 
 import {
   Payments,
   mapDispatchToProps
 } from '../../../src/components/utils/Payments';
-import { store } from '../../../mocks/testConfig';
 
 const props = { handleToken: jest.fn() };
 const component = shallow(<Payments {...props} />);
@@ -23,7 +21,7 @@ test('passes down props.handleToken to <StripeCheckout /> component', () => {
   expect(props.handleToken).toHaveBeenCalledTimes(1);
 });
 
-test('dispatches handleToken from store to props', async () => {
+test('dispatches handleToken from store to props', () => {
   const props = mapDispatchToProps(jest.fn());
 
   expect(Object.keys(props)[0]).toBe('handleToken');

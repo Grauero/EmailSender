@@ -60,14 +60,15 @@ class SurveyList extends Component<{} & ReduxProps, {}> {
   }
 }
 
-const mapStateToProps = (state: IAppState) => ({
+export const mapStateToProps = (state: IAppState) => ({
   surveys: state.surveys
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+export const mapDispatchToProps = (dispatch: Dispatch) => {
   return bindActionCreators({ fetchSurveys, deleteSurvey }, dispatch);
 };
 
+export { SurveyList };
 export default connect(
   mapStateToProps,
   mapDispatchToProps

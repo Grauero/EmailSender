@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 
-import formFields from './formFields';
+import { formFields } from './formFields';
 import { submitSurvey } from '../../store/actions';
 import { IAppState } from '../../store/reducers';
 
@@ -48,14 +48,15 @@ const SurveyFormReview: React.FC<ISurveyFormReview> = props => {
   );
 };
 
-const mapStateToProps = (state: IAppState) => ({
+export const mapStateToProps = (state: IAppState) => ({
   formValues: state.form.surveyForm.values
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+export const mapDispatchToProps = (dispatch: Dispatch) => {
   return bindActionCreators({ submitSurvey }, dispatch);
 };
 
+export { SurveyFormReview };
 export default connect(
   mapStateToProps,
   mapDispatchToProps

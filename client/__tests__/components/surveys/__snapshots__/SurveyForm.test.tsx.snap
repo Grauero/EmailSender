@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <form>
+    <Field
+      component={[Function]}
+      key="title"
+      label="Survey Title"
+      name="title"
+      type="text"
+    />
+    <Field
+      component={[Function]}
+      key="subject"
+      label="Subject Line"
+      name="subject"
+      type="text"
+    />
+    <Field
+      component={[Function]}
+      key="body"
+      label="Email Body"
+      name="body"
+      type="text"
+    />
+    <Field
+      component={[Function]}
+      key="recipients"
+      label="Recipient List"
+      name="recipients"
+      type="text"
+    />
+    <Link
+      className="red btn-flat white-text form-back"
+      replace={false}
+      to="/surveys"
+    >
+      Cancel
+    </Link>
+    <button
+      className="teal btn-flat right white-text form-submit"
+      type="submit"
+    >
+      Next
+      <i
+        className="material-icons right"
+      >
+        done
+      </i>
+    </button>
+  </form>
+</div>
+`;
+
+exports[`renderFields function returns correct number of <Field> components 1`] = `Array []`;
+
+exports[`renderFields function returns correct number of <Field> components 2`] = `
+Array [
+  <Field
+    component={[Function]}
+    label="l1"
+    name="n1"
+    type="text"
+  />,
+]
+`;
+
+exports[`renderFields function returns correct number of <Field> components 3`] = `
+Array [
+  <Field
+    component={[Function]}
+    label="l1"
+    name="n1"
+    type="text"
+  />,
+  <Field
+    component={[Function]}
+    label="l2"
+    name="n2"
+    type="text"
+  />,
+]
+`;

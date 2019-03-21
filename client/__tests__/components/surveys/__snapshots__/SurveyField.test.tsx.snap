@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div>
+  <label>
+    label
+  </label>
+  <input
+    className="input"
+  />
+  <div
+    className="red-text touched"
+  />
+</div>
+`;

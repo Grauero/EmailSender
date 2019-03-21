@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { reduxForm, Field, FormErrors, InjectedFormProps } from 'redux-form';
+import { reduxForm, Field, InjectedFormProps } from 'redux-form';
 
 import SurveyField from './SurveyField';
 import validateEmails from '../utils/validateEmails';
-import formFields from './formFields';
+import { formFields, IFormField } from './formFields';
 
 export interface IError {
   recipients: string | null;
@@ -22,7 +21,7 @@ const SurveyForm: React.FC<InjectedFormProps<{}> & ISurveyForm> = props => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSurveySubmit)}>
-        {renderFields()}
+        {renderFields(formFields)}
         <Link to="/surveys" className="red btn-flat white-text form-back">
           Cancel
         </Link>
@@ -38,7 +37,7 @@ const SurveyForm: React.FC<InjectedFormProps<{}> & ISurveyForm> = props => {
   );
 };
 
-function renderFields() {
+export function renderFields(formFields: IFormField[]) {
   return formFields.map(({ label, name }) => (
     <Field
       key={name}
@@ -50,7 +49,7 @@ function renderFields() {
   ));
 }
 
-function validate(values) {
+export function validate(values, formFields) {
   const errors: IError = { recipients: null };
   errors.recipients = validateEmails(values.recipients);
 
@@ -63,6 +62,7 @@ function validate(values) {
   return errors;
 }
 
+export { SurveyForm };
 export default reduxForm<{}, ISurveyForm>({
   form: 'surveyForm',
   validate,

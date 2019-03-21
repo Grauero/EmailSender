@@ -40,6 +40,7 @@ class SurveyNew extends Component<InjectedFormProps<{}>, ISurveyNewState> {
   }
 }
 
+export { SurveyNew };
 export default reduxForm<{}, {}>({
   form: 'surveyForm'
 })(SurveyNew);
