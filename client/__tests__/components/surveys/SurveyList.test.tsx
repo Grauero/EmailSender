@@ -27,6 +27,14 @@ test('renders props.surveys', () => {
   expect(component.find('.card-action').length).toBe(1);
 });
 
+test('renders only wrapper if props.surveys is NULL', () => {
+  const emptySurveys = { ...props, surveys: null };
+  const children = shallow(<SurveyList {...emptySurveys} />).find('.cards')
+    .children;
+
+  expect(children.length).toBe(1);
+});
+
 test('calls props.deleteSurvey, props.fetchSurveys by clicking close icon', () => {
   component.find('i').simulate('click');
 

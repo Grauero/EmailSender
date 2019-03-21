@@ -44,6 +44,8 @@ class SurveyList extends Component<{} & ReduxProps, {}> {
         </div>
       ));
     }
+
+    return null;
   };
 
   private deleteSurvey = async id => {

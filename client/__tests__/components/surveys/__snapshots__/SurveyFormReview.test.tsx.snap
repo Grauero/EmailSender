@@ -60,3 +60,64 @@ exports[`matches snapshot 1`] = `
   </button>
 </div>
 `;
+
+exports[`not renders names if props.formValues is empty 1`] = `
+<div
+  className="preview"
+>
+  <h5>
+    Confirm your entries
+  </h5>
+  <div
+    key="title"
+  >
+    <label>
+      Survey Title
+    </label>
+    <div />
+  </div>
+  <div
+    key="subject"
+  >
+    <label>
+      Subject Line
+    </label>
+    <div />
+  </div>
+  <div
+    key="body"
+  >
+    <label>
+      Email Body
+    </label>
+    <div />
+  </div>
+  <div
+    key="recipients"
+  >
+    <label>
+      Recipient List
+    </label>
+    <div />
+  </div>
+  <button
+    className="yellow darken-3 white-text btn-flat form-back"
+    onClick={[Function]}
+    type="button"
+  >
+    Back
+  </button>
+  <button
+    className="green btn-flat right white-text form-submit"
+    onClick={[Function]}
+    type="button"
+  >
+    Send Survey
+    <i
+      className="material-icons right"
+    >
+      email
+    </i>
+  </button>
+</div>
+`;

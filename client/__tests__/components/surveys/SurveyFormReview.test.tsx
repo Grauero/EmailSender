@@ -10,7 +10,7 @@ import {
 } from '../../../src/components/surveys/SurveyFormReview';
 
 const props = {
-  formValues: [{ name: 'n1', label: 'l1' }],
+  formValues: [{ name: 'n1', label: 'l1' }, { label: 'l1' }],
   onCancel: jest.fn(),
   submitSurvey: jest.fn(),
   history: {} as History
@@ -18,6 +18,13 @@ const props = {
 const component = shallow(<SurveyFormReview {...props} />);
 
 test('matches snapshot', () => {
+  expect(toJSON(component)).toMatchSnapshot();
+});
+
+test('not renders names if props.formValues is empty', () => {
+  const emptyFormValues = { ...props, formValues: null };
+  const component = shallow(<SurveyFormReview {...emptyFormValues} />);
+
   expect(toJSON(component)).toMatchSnapshot();
 });
 

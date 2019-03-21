@@ -3,7 +3,8 @@ module.exports = {
   verbose: true,
   setupFiles: ['<rootDir>/mocks/jest.setup.ts'],
   moduleNameMapper: {
-    '\\.(gif|ttf|eot|svg)$': '<rootDir>/mocks/fileMock.ts'
+    '\\.(gif|ttf|eot|svg)$': '<rootDir>/mocks/fileMock.ts',
+    '\\.(css|less)$': '<rootDir>/mocks/styleMock.ts'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js'],
   transform: {

@@ -34,10 +34,11 @@ class App extends Component<ReturnType<typeof mapDispatchToProps>> {
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+export const mapDispatchToProps = (dispatch: Dispatch) => {
   return bindActionCreators({ fetchUser }, dispatch);
 };
 
+export { App };
 export default connect(
   null,
   mapDispatchToProps

@@ -8,7 +8,7 @@ import SurveyField from '../../../src/components/surveys/SurveyField';
 const props = {
   input: {},
   label: 'label',
-  meta: { error: '', touched: false }
+  meta: { error: 'error', touched: true }
 };
 const component = shallow(<SurveyField {...props} />);
 
