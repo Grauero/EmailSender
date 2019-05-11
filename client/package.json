@@ -45,6 +45,8 @@
     "test": "jest --watch",
     "test-clear-cache": "jest --clearCache",
     "test-coverage": "jest --coverage",
+    "test-CI": "jest",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -74,6 +76,7 @@
     "babel-jest": "^23.6.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-polyfill": "^6.26.0",
+    "coveralls": "^3.0.3",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
     "enzyme-to-json": "^3.3.5",
