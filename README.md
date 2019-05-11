@@ -1,4 +1,4 @@
-# EmailSender
+# EmailSender [![Build Status](https://travis-ci.org/Grauero/EmailSender.svg?branch=master)](https://travis-ci.org/Grauero/EmailSender) [![Coverage Status](https://coveralls.io/repos/github/Grauero/EmailSender/badge.svg?branch=master)](https://coveralls.io/github/Grauero/EmailSender?branch=master)
 
 https://email-sender-applciation.herokuapp.com/
 
